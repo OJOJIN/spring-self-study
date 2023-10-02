@@ -6,6 +6,8 @@ import com.study.jinyoung.domain.member.dto.request.CreateSampleRequestDto;
 import com.study.jinyoung.domain.member.dto.response.CreateSampleResponseDto;
 import com.study.jinyoung.domain.member.service.SampleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -15,13 +17,10 @@ public class SampleController {
 
     private final SampleService sampleService;
 
-    @GetMapping
-    public SuccessResponse<String> test() {
-        return SuccessResponse.success(SuccessCode.OK, "test OK");
-    }
-
     @PostMapping
-    public SuccessResponse<CreateSampleResponseDto> createSample(@RequestBody CreateSampleRequestDto createSample) {
-        return SuccessResponse.success(SuccessCode.CREATED, sampleService.createSample(createSample.getText()));
+    public ResponseEntity<SuccessResponse<CreateSampleResponseDto>> createSample(@RequestBody CreateSampleRequestDto createSample) {
+        CreateSampleResponseDto response = sampleService.createSample(createSample.getText());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(SuccessResponse.success(SuccessCode.CREATED, response));
     }
 }
