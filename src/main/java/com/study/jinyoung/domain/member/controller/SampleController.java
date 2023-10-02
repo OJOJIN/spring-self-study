@@ -20,7 +20,6 @@ public class SampleController {
     @PostMapping
     public ResponseEntity<SuccessResponse<CreateSampleResponseDto>> createSample(@RequestBody CreateSampleRequestDto createSample) {
         CreateSampleResponseDto response = sampleService.createSample(createSample.getText());
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(SuccessResponse.success(SuccessCode.CREATED, response));
+        return SuccessResponse.of(SuccessCode.CREATED, response);
     }
 }
