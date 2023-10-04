@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
+import static org.springframework.http.HttpStatus.UNAUTHORIZED;
+
 @Getter
 @RequiredArgsConstructor
 public enum ApplicationError {
@@ -22,6 +24,7 @@ public enum ApplicationError {
     /**
      *  403 Forbidden
      */
+    INVAILID_JWT_ACCESS_TOKEN(HttpStatus.UNAUTHORIZED,  "유효하지 JWT ACCESS 토큰 입니다."),
 
 
     /**
