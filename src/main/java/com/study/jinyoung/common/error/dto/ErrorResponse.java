@@ -18,7 +18,7 @@ public class ErrorResponse {
         return new ErrorResponse(ApplicationError.INTERNAL_SERVER_ERROR.getStatus().value(), ApplicationError.INTERNAL_SERVER_ERROR.getMessage());
     }
 
-    public static ErrorResponse of(ApplicationException exception) {
+    public static ErrorResponse of(ApplicationError exception) {
         return ErrorResponse.builder()
                 .status(exception.getStatus().value())
                 .message(exception.getMessage())
