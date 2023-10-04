@@ -1,7 +1,6 @@
-package com.study.jinyoung.domain.member.dto.response;
+package com.study.jinyoung.domain.sample.dto.response;
 
-import com.study.jinyoung.domain.member.dto.request.CreateSampleRequestDto;
-import com.study.jinyoung.domain.member.entity.Sample;
+import com.study.jinyoung.domain.sample.entity.Sample;
 import lombok.Builder;
 import lombok.Getter;
 
