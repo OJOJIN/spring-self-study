@@ -19,12 +19,12 @@ public enum ApplicationError {
      *  401 Unauthorized
      */
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "접근할 수 있는 권한이 없습니다."),
+    INVALID_JWT_ACCESS_TOKEN(HttpStatus.UNAUTHORIZED,  "ACCESS TOKEN의 형식이 올바르지 않습니다."),
 
 
     /**
      *  403 Forbidden
      */
-    INVAILID_JWT_ACCESS_TOKEN(HttpStatus.UNAUTHORIZED,  "유효하지 JWT ACCESS 토큰 입니다."),
 
 
     /**
