@@ -1,4 +1,4 @@
-package com.study.jinyoung.domain.member.dto.request;
+package com.study.jinyoung.domain.sample.dto.request;
 
 import lombok.Getter;
 
