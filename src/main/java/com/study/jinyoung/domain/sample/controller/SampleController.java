@@ -1,12 +1,11 @@
-package com.study.jinyoung.domain.member.controller;
+package com.study.jinyoung.domain.sample.controller;
 
 import com.study.jinyoung.common.dto.SuccessResponse;
 import com.study.jinyoung.common.dto.code.SuccessCode;
-import com.study.jinyoung.domain.member.dto.request.CreateSampleRequestDto;
-import com.study.jinyoung.domain.member.dto.response.CreateSampleResponseDto;
-import com.study.jinyoung.domain.member.service.SampleService;
+import com.study.jinyoung.domain.sample.dto.request.CreateSampleRequestDto;
+import com.study.jinyoung.domain.sample.dto.response.CreateSampleResponseDto;
+import com.study.jinyoung.domain.sample.service.SampleService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

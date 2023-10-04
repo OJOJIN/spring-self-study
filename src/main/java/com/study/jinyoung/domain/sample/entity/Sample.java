@@ -1,4 +1,4 @@
-package com.study.jinyoung.domain.member.entity;
+package com.study.jinyoung.domain.sample.entity;
 
 
 import jakarta.persistence.*;

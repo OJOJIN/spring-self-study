@@ -1,9 +1,9 @@
-package com.study.jinyoung.domain.member.service;
+package com.study.jinyoung.domain.sample.service;
 
 import com.study.jinyoung.common.error.DuplicateException;
-import com.study.jinyoung.domain.member.dto.response.CreateSampleResponseDto;
-import com.study.jinyoung.domain.member.entity.Sample;
-import com.study.jinyoung.domain.member.repository.SampleRepository;
+import com.study.jinyoung.domain.sample.dto.response.CreateSampleResponseDto;
+import com.study.jinyoung.domain.sample.entity.Sample;
+import com.study.jinyoung.domain.sample.repository.SampleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
