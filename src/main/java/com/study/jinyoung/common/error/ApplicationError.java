@@ -20,7 +20,9 @@ public enum ApplicationError {
      */
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "접근할 수 있는 권한이 없습니다."),
     INVALID_JWT_ACCESS_TOKEN(HttpStatus.UNAUTHORIZED,  "ACCESS TOKEN의 형식이 올바르지 않습니다."),
-
+    EXPIRED_JWT_ACCESS_TOKEN(HttpStatus.UNAUTHORIZED, "ACCESS TOKEN이 만료되었습니다. 재발급 받아주세요."),
+    INVALID_JWT_REFRESH_TOKEN(HttpStatus.UNAUTHORIZED,  "REFRESH TOKEN의 형식이 올바르지 않습니다."),
+    EXPIRED_JWT_REFRESH_TOKEN(HttpStatus.UNAUTHORIZED, "REFRESH TOKEN이 만료되었습니다. 재발급 받아주세요."),
 
     /**
      *  403 Forbidden
