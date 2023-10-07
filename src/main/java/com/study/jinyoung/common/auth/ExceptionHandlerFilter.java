@@ -2,6 +2,7 @@ package com.study.jinyoung.common.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.study.jinyoung.common.error.ApplicationError;
+import com.study.jinyoung.common.error.ForbiddenException;
 import com.study.jinyoung.common.error.UnauthorizedException;
 import com.study.jinyoung.common.error.dto.ErrorResponse;
 import jakarta.servlet.FilterChain;
@@ -24,6 +25,8 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
         } catch (UnauthorizedException e) {
             handleUnauthorizedException(response, e);
+        } catch (ForbiddenException e) {
+            handleForbiddenException(response, e);
         } catch (Exception ee) {
             handleException(response);
         }
@@ -35,6 +38,16 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
         if (e instanceof UnauthorizedException ue) {
             response.setStatus(ue.getError().getStatus().value());;
             response.getWriter().write(objectMapper.writeValueAsString(ErrorResponse.of(ue.getError())));
+        }
+    }
+
+
+    private void handleForbiddenException(HttpServletResponse response, Exception e) throws IOException {
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setCharacterEncoding("utf-8");
+        if (e instanceof ForbiddenException fe) {
+            response.setStatus(fe.getError().getStatus().value());;
+            response.getWriter().write(objectMapper.writeValueAsString(ErrorResponse.of(fe.getError())));
         }
     }
 

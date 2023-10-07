@@ -13,7 +13,7 @@ public class Sample {
 
     @Id
     @Column(name = "sample_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String text;

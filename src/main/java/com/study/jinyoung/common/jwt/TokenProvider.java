@@ -1,10 +1,13 @@
-package com.study.jinyoung.common.auth;
+package com.study.jinyoung.common.jwt;
 
 import com.study.jinyoung.common.error.ApplicationError;
 import com.study.jinyoung.common.error.ApplicationException;
 import com.study.jinyoung.common.error.UnauthorizedException;
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -17,17 +20,17 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-@Component
 @Slf4j
+@Component
 public class TokenProvider {
 
-    @Value("${secret-key}")
+    @Value("${jwt.secret-key}")
     private String secretKey;
 
-    @Value("${access-expiration-hours}")
+    @Value("${jwt.access-expiration-hours}")
     private long accessExpirationHours;;
 
-    @Value("${refresh-expiration-hours}")
+    @Value("${jwt.refresh-expiration-hours}")
     private long refreshExpirationHours;
 
     public static final String ACCESS_TOKEN = "Access_Token";
@@ -97,6 +100,24 @@ public class TokenProvider {
             log.error(e.getMessage());
             throw new UnauthorizedException(ApplicationError.INVALID_JWT_REFRESH_TOKEN);
         }
+    }
+
+
+    private Claims getClaimsFormToken(String token) {
+        try {
+            Claims claims = Jwts.parser().setSigningKey(secretKey.getBytes())
+                    .parseClaimsJws(token).getBody();
+
+            return claims;
+        } catch (Exception e){
+            throw new ApplicationException(ApplicationError.INVALID_JWT_REFRESH_TOKEN);
+        }
+    }
+
+    public Long getExpDateFromToken(String token) {
+        Claims claims = getClaimsFormToken(token);
+
+        return Long.parseLong(claims.get("exp").toString());
     }
 
     // header 토큰을 가져오는 기능

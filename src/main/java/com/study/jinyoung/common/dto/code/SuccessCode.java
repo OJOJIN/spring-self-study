@@ -17,7 +17,8 @@ public enum SuccessCode {
     /**
      * 201 CREATED SUCCESS
      */
-    CREATED(HttpStatus.CREATED, "생성 요청이 성공했습니다.");
+    CREATED(HttpStatus.CREATED, "생성 요청이 성공했습니다."),
+    MEMBER_CREATED(HttpStatus.CREATED, "회원가입이 완료되었습니다.");
 
     private final HttpStatus status;
     private final String message;
