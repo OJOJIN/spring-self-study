@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
-public enum ApplicationError {
+public enum ErrorCode {
 
     /**
      *  400 Bad Request
@@ -16,7 +16,6 @@ public enum ApplicationError {
     /**
      *  401 Unauthorized
      */
-
 
     /**
      *  403 Forbidden
