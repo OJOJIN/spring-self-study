@@ -5,9 +5,6 @@ import com.study.jinyoung.common.error.ApplicationException;
 import com.study.jinyoung.common.error.UnauthorizedException;
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -20,17 +17,18 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+@PropertySource("classpath:jwt.yml")
 @Slf4j
 @Component
 public class TokenProvider {
 
-    @Value("${jwt.secret-key}")
+    @Value("${secret-key}")
     private String secretKey;
 
-    @Value("${jwt.access-expiration-hours}")
+    @Value("${access-expiration-hours}")
     private long accessExpirationHours;;
 
-    @Value("${jwt.refresh-expiration-hours}")
+    @Value("${refresh-expiration-hours}")
     private long refreshExpirationHours;
 
     public static final String ACCESS_TOKEN = "Access_Token";

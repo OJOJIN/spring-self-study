@@ -19,6 +19,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
+import java.util.Date;
+
 import static com.study.jinyoung.domain.user.entity.User.createUser;
 
 @RequiredArgsConstructor
@@ -91,6 +94,8 @@ public class AuthService {
 
     private Boolean validateRefreshTokenRemainDayUnderOneWeek(String refreshToken) {
         Long expireTime = tokenProvider.getExpDateFromToken(refreshToken);
-        return (expireTime - System.currentTimeMillis()) / (24 * 3600) >= 7;
+        System.out.println((expireTime * 1000 - System.currentTimeMillis()) / 1000 / 24 / 3600);
+        System.out.println((expireTime * 1000 - System.currentTimeMillis()) / (24 * 3600000) < 7);
+        return (expireTime * 1000 - System.currentTimeMillis()) / (24 * 3600000) < 7;
     }
 }
