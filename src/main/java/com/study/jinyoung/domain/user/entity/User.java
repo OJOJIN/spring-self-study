@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-@Entity
+@Entity(name = "Member")
 public class User {
 
     @Id
