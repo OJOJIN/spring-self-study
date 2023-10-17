@@ -1,8 +1,7 @@
 package com.study.jinyoung.common.auth;
 
-import com.study.jinyoung.common.error.ApplicationError;
+import com.study.jinyoung.common.error.ErrorCode;
 import com.study.jinyoung.common.error.ForbiddenException;
-import com.study.jinyoung.common.error.UnauthorizedException;
 import com.study.jinyoung.common.jwt.TokenProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -37,7 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(accessToken) && accessToken.startsWith(AuthConstants.TOKEN_TYPE)) {
             return accessToken.split(" ")[1];
         }
-        throw new ForbiddenException(ApplicationError.FORBIDDEN);
+        throw new ForbiddenException(ErrorCode.FORBIDDEN);
     }
 
 

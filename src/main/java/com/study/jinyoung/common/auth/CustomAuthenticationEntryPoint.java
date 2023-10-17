@@ -1,7 +1,7 @@
 package com.study.jinyoung.common.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.study.jinyoung.common.error.ApplicationError;
+import com.study.jinyoung.common.error.ErrorCode;
 import com.study.jinyoung.common.error.dto.ErrorResponse;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("utf-8");
-        response.setStatus(ApplicationError.UNAUTHORIZED.getStatus().value());
-        response.getWriter().write(objectMapper.writeValueAsString(ErrorResponse.of(ApplicationError.UNAUTHORIZED)));
+        response.setStatus(ErrorCode.UNAUTHORIZED.getStatus().value());
+        response.getWriter().write(objectMapper.writeValueAsString(ErrorResponse.of(ErrorCode.UNAUTHORIZED)));
     }
 }

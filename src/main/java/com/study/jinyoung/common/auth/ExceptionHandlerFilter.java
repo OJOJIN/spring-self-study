@@ -1,7 +1,7 @@
 package com.study.jinyoung.common.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.study.jinyoung.common.error.ApplicationError;
+import com.study.jinyoung.common.error.ErrorCode;
 import com.study.jinyoung.common.error.ForbiddenException;
 import com.study.jinyoung.common.error.UnauthorizedException;
 import com.study.jinyoung.common.error.dto.ErrorResponse;
@@ -54,7 +54,7 @@ public class ExceptionHandlerFilter extends OncePerRequestFilter {
     private void handleException(HttpServletResponse response) throws IOException {
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding("utf-8");
-        response.setStatus(ApplicationError.INTERNAL_SERVER_ERROR.getStatus().value());
-        response.getWriter().write(objectMapper.writeValueAsString(ErrorResponse.of(ApplicationError.INTERNAL_SERVER_ERROR)));
+        response.setStatus(ErrorCode.INTERNAL_SERVER_ERROR.getStatus().value());
+        response.getWriter().write(objectMapper.writeValueAsString(ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR)));
     }
 }

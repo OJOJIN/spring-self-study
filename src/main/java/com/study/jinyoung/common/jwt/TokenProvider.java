@@ -1,6 +1,6 @@
 package com.study.jinyoung.common.jwt;
 
-import com.study.jinyoung.common.error.ApplicationError;
+import com.study.jinyoung.common.error.ErrorCode;
 import com.study.jinyoung.common.error.ApplicationException;
 import com.study.jinyoung.common.error.UnauthorizedException;
 import io.jsonwebtoken.*;
@@ -79,10 +79,10 @@ public class TokenProvider {
             return true;
         } catch (ExpiredJwtException e) {
             log.error(e.getMessage());
-            throw new UnauthorizedException(ApplicationError.EXPIRED_JWT_ACCESS_TOKEN);
+            throw new UnauthorizedException(ErrorCode.EXPIRED_JWT_ACCESS_TOKEN);
         } catch (UnsupportedJwtException | MalformedJwtException | SignatureException | IllegalArgumentException e) {
             log.error(e.getMessage());
-            throw new UnauthorizedException(ApplicationError.INVALID_JWT_ACCESS_TOKEN);
+            throw new UnauthorizedException(ErrorCode.INVALID_JWT_ACCESS_TOKEN);
         }
     }
 
@@ -93,10 +93,10 @@ public class TokenProvider {
             return true;
         } catch (ExpiredJwtException e) {
             log.error(e.getMessage());
-            throw new UnauthorizedException(ApplicationError.EXPIRED_JWT_REFRESH_TOKEN);
+            throw new UnauthorizedException(ErrorCode.EXPIRED_JWT_REFRESH_TOKEN);
         } catch (UnsupportedJwtException | MalformedJwtException | SignatureException | IllegalArgumentException e) {
             log.error(e.getMessage());
-            throw new UnauthorizedException(ApplicationError.INVALID_JWT_REFRESH_TOKEN);
+            throw new UnauthorizedException(ErrorCode.INVALID_JWT_REFRESH_TOKEN);
         }
     }
 
@@ -108,7 +108,7 @@ public class TokenProvider {
 
             return claims;
         } catch (Exception e){
-            throw new ApplicationException(ApplicationError.INVALID_JWT_REFRESH_TOKEN);
+            throw new ApplicationException(ErrorCode.INVALID_JWT_REFRESH_TOKEN);
         }
     }
 

@@ -1,6 +1,6 @@
 package com.study.jinyoung.domain.user.service;
 
-import com.study.jinyoung.common.error.ApplicationError;
+import com.study.jinyoung.common.error.ErrorCode;
 import com.study.jinyoung.common.error.EntityNotFoundException;
 import com.study.jinyoung.domain.user.dto.response.UserCheckResponseDto;
 import com.study.jinyoung.domain.user.entity.User;
@@ -24,6 +24,6 @@ public class UserService {
                 .build();
     }
     private User getUserByUserId(Long userId) {
-        return userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException(ApplicationError.MEMBER_NOT_FOUND));
+        return userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException(ErrorCode.MEMBER_NOT_FOUND));
     }
 }

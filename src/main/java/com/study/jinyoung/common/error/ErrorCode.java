@@ -4,11 +4,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
-import static org.springframework.http.HttpStatus.UNAUTHORIZED;
-
 @Getter
 @RequiredArgsConstructor
-public enum ApplicationError {
+public enum ErrorCode {
 
     /**
      *  400 Bad Request

@@ -1,6 +1,6 @@
 package com.study.jinyoung.domain.auth.service;
 
-import com.study.jinyoung.common.error.ApplicationError;
+import com.study.jinyoung.common.error.ErrorCode;
 import com.study.jinyoung.common.error.DuplicateException;
 import com.study.jinyoung.common.error.EntityNotFoundException;
 import com.study.jinyoung.common.error.UnauthorizedException;
@@ -18,9 +18,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.Instant;
-import java.util.Date;
 
 import static com.study.jinyoung.domain.user.entity.User.createUser;
 
@@ -54,18 +51,18 @@ public class AuthService {
     }
 
     private User getUserByUserName(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException(ApplicationError.MEMBER_NOT_FOUND));
+        return userRepository.findByUsername(username).orElseThrow(() -> new EntityNotFoundException(ErrorCode.MEMBER_NOT_FOUND));
     }
 
     private void validateUserPassword(String inputPassword, String encodedPassword) {
         if(!passwordEncoder.matches(inputPassword, encodedPassword)) {
-            throw new UnauthorizedException(ApplicationError.WRONG_USER_PASSWORD);
+            throw new UnauthorizedException(ErrorCode.WRONG_USER_PASSWORD);
         }
     }
 
     private void validateDuplicateUsername(String username) {
         if(userRepository.existsByUsername(username)){
-            throw new DuplicateException(ApplicationError.DUPLICATE_USERNAME);
+            throw new DuplicateException(ErrorCode.DUPLICATE_USERNAME);
         }
     }
 
