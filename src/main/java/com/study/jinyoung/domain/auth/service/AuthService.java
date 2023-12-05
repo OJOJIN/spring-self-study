@@ -79,8 +79,8 @@ public class AuthService {
             // 1주일 이하일 때만 새로운 토큰으로 교체해줌
             if(validateRefreshTokenRemainDayUnderOneWeek(originalRefreshToken.getRefreshToken())) {
                 originalRefreshToken.update(newRefreshToken);
-                return originalRefreshToken.getRefreshToken();
             }
+            return originalRefreshToken.getRefreshToken();
         }
         // redis에 refreshToken이 담겨있지 않다면 바로 저장
         else {
@@ -91,8 +91,6 @@ public class AuthService {
 
     private Boolean validateRefreshTokenRemainDayUnderOneWeek(String refreshToken) {
         Long expireTime = tokenProvider.getExpDateFromToken(refreshToken);
-        System.out.println((expireTime * 1000 - System.currentTimeMillis()) / 1000 / 24 / 3600);
-        System.out.println((expireTime * 1000 - System.currentTimeMillis()) / (24 * 3600000) < 7);
         return (expireTime * 1000 - System.currentTimeMillis()) / (24 * 3600000) < 7;
     }
 }
