@@ -11,7 +11,7 @@ public enum ErrorCode {
     /**
      *  400 Bad Request
      */
-
+    BAD_REQUEST(HttpStatus.BAD_REQUEST, "잘못된 요청입니다."),
 
     /**
      *  401 Unauthorized
@@ -34,6 +34,11 @@ public enum ErrorCode {
      */
     ENTITY_NOT_FOUND(HttpStatus.NOT_FOUND, "요청하신 엔티티를 찾을 수 없습니다."),
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "요청하신 멤버를 찾을 수 없습니다."),
+
+    /**
+     * 405 Method Not Allowed
+     */
+    METHOD_NOT_ALLOWED(HttpStatus.METHOD_NOT_ALLOWED, "잘못된 HTTP method 요청입니다."),
 
 
 
