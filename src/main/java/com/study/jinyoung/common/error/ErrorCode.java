@@ -23,6 +23,7 @@ public enum ErrorCode {
     EXPIRED_JWT_REFRESH_TOKEN(HttpStatus.UNAUTHORIZED, "REFRESH TOKEN이 만료되었습니다. 재발급 받아주세요."),
     WRONG_USER_PASSWORD(HttpStatus.UNAUTHORIZED, "입력하신 비밀번호가 올바르지 않습니다."),
 
+
     /**
      *  403 Forbidden
      */
@@ -33,6 +34,7 @@ public enum ErrorCode {
      */
     ENTITY_NOT_FOUND(HttpStatus.NOT_FOUND, "요청하신 엔티티를 찾을 수 없습니다."),
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "요청하신 멤버를 찾을 수 없습니다."),
+
 
 
     /**
